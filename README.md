@@ -1,9 +1,6 @@
 # EpiTyping
 EpiTyping is a tool for detecting imprinting and X-chromosome inactivation status from RNA-seq
 ![scheme](https://user-images.githubusercontent.com/112553439/204289922-c3bf588d-bb65-423b-af4a-0ec3f8b81dff.jpg)
-
-
-
 ## Pre-requisites 
 Nextflow and Singularity (or apptainer, the newer name for the Singularity project) are the only pre-requisites for the EpiTyping tool. Install both if needed and make sure they are properly running on your system. If the following commands do not generate any error message you are good to go.
 ```bash
