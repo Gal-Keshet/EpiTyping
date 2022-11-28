@@ -30,7 +30,7 @@ nextflow run /path/to/EpiTyping/installation.nf [parameters]  # run the installa
 
 ### Advanced parameters 
 
-* **Use with caution**. Might lead to unexpected resaults if the alternative gtf/fasta files have a different format than the default files.
+* **Use with caution**. Might lead to unexpected results if the alternative gtf/fasta files have a different format than the default files.
 
 --humanFasta: url for a human fasta file (default: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_42/GRCh38.primary_assembly.genome.fa.gz)
 
