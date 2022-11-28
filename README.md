@@ -50,9 +50,9 @@ nextflow run /path/to/EpiTyping/installation.nf [parameters]  # run the installa
 ```bash
 bgzip /path/to/fastq_dir/* # Use if fastq files are not compressed.
 
-nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --single true  # for single-end reads (all files in fastq folder need to be single ended)
+nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --single true [parameters] # for single-end reads (all files in fastq folder need to be single ended)
 
-nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --single false  # for paired-ends reads (default. All files in fastq folder need to be paired ended)
+nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --single false [parameters] # for paired-ends reads (default. All files in fastq folder need to be paired ended)
 ```
 
 * **Important!** All RNA (or DNA) fastq files need to be gz-compressed. Single ended fastq files need to have the following namming format: sample-name.fastq.gz, and paired ended fastq files need to have the following format: sample-name_1.fastq.gz/sample-name_2.fastq.gz
