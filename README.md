@@ -76,7 +76,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $PWD/dna_fastq). 
 
-*Make sure **all** the RNA-seq samples in the fastq folder are from the same cell line
+*If a DNA-seq sample is given for integration, make sure **all** the RNA-seq samples in the fastq folder are from the same cell line
 
 --outdir: Existing or to-be-created path for output files (default: $PWD/output)
 
