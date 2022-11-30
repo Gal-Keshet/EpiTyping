@@ -88,11 +88,31 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --outdir: Existing or to-be-created path for output files (default: $PWD/output)
 
-### Advanced parameters (see note on advanced parameters for installation)
+### Advanced parameters (Use with caution. see note on advanced parameters for installation)
 
 --common_adapters: Full path to a fastq file containing ilumina adapter sequences to be used with the Trimmomatic software. We provide such file in the genome_files directory (default: $projectDir/genome_files/CommonAdapters.fa).
 
 --index: Full path to the human STAR index folder (default: $projectDir/genome_files/star_index)
+
+--mouse_index: Full path to the mouse STAR index folder (default: $projectDir/genome_files/star_mouse_index)
+
+--gtf: Full path to a human gtf file (default: $projectDir/genome_files/star_ref/gencode.v42.primary_assembly.annotation.gtf)
+
+--ref: Full path to a human fasta file (default: $projectDir/genome_files/star_ref/GRCh38.primary_assembly.genome.fa)
+
+--ref_dict: Full path to a human fasta dictionary file (created and to bu used by gatk) (default: $projectDir/genome_files/star_ref/GRCh38.primary_assembly.genome.dict)
+
+--dbsnp: Full path to a dbsnp vcf file (default: $projectDir/genome_files/dbSNP155Renamed.vcf.gz)
+
+--exon_intervals: Full path to a bed file containing exon intervals (default: $projectDir/genome_files/GRCh38_exome.bed.gz)
+
+--imprinted_intervals: Full path to a sorted bed file containing imprinted genes intervals (default: $projectDir/genome_files/imprinted_genes_sorted.bed)
+
+--imprinted_genes: Full path to a csv file containing two columns (Gene, Location) with imprinted genes name and their cytogenetic band (default: $projectDir/genome_files/imprinted_genes_location.csv)
+
+--headers: Full path to a vcf headers file for vcf annotation with gene names (default: $projectDir/genome_files/headers_for_annotation.txt)
+
+--bwa_index: Full path to the BWA index files (default: )
 
 Example for a paired-ends RNA-seq run, using 4 CPUs, keeping intermediate files:
 ```bash
