@@ -58,7 +58,13 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 * **Important!** All RNA (or DNA) fastq files need to be gz-compressed. Single ended fastq files need to have the following namming format: sample-name.fastq.gz, and paired ended fastq files need to have the following format: sample-name_1.fastq.gz/sample-name_2.fastq.gz
 
 ### Basic parameters
---fastq_folder: Path to a folder containing the fastq files (default: $PWD/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
+--project_dir: Full path to the the project directory (default: $PWD).
+
+* **Important-do not be confused between $project_dir (a user parameter) and $projectDir (which is the directory where the software execution file is)**
+
+--fastq_folder: Path to a folder containing the fastq files (default: $project_dir/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
+
+--single: Whether the RNA-seq library is single ended (true/false, default: false)
 
 -profile: (standard/cluster, default: standard).
 
@@ -66,7 +72,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --keepInter: Whether to keep intermediate alignment and VCF files (true/false, default: false). 
 
---filterMouse: Whether to perform mouse contamination cleanup (true/false, default: true).
+--mouse_feeders: Whether to perform mouse contamination cleanup (true/false, default: true).
 
 --strandness: Whether the library is unstranded or strand-specific (int, 0: unstranded; 1: forward strand; 2: reverse strand, default: 0)
 
@@ -74,13 +80,19 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --dna_sample_name: Name of DNA-seq sample without the .fastq.gz extension. Use if a DNA-seq for the examined cell line is available (default: "" for no integration).
 
---dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $PWD/dna_fastq). 
+--dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $project_dir/dna_fastq). 
+
+--dna_single: Whether the DNA-seq library is single ended (true/false, default: false)
 
 * If a DNA-seq sample is given for integration, make sure **all** the RNA-seq samples in the fastq folder are from the same cell line
 
 --outdir: Existing or to-be-created path for output files (default: $PWD/output)
 
 ### Advanced parameters (see note on advanced parameters for installation)
+
+--common_adapters: Full path to a fastq file containing ilumina adapter sequences to be used with the Trimmomatic software. We provide such file in the genome_files directory (default: $projectDir/genome_files/CommonAdapters.fa).
+
+--index: Full path to the human STAR index folder (default: $projectDir/genome_files/star_index)
 
 Example for a paired-ends RNA-seq run, using 4 CPUs, keeping intermediate files:
 ```bash
