@@ -111,7 +111,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 # Examples
 
-**Let there be a folder in a path /User/gal/epigenetic_analysis/fastq within a slurm cluster which contains fastq files from 2 paired-ended samples that were sequenced by their 1st strand: ERR590400_1.fastq.gz;  ERR590400_2.fastq.gz; ERR590401_1.fastq.gz; ERR590401_2.fastq.gz. Suppose these samples grew on MEFs.**
+**Let there be a folder in a path /User/gal/epigenetic_analysis/fastq within a slurm cluster which contains fastq files from 2 paired-end samples that were sequenced by their 1st strand: ERR590400_1.fastq.gz;  ERR590400_2.fastq.gz; ERR590401_1.fastq.gz; ERR590401_2.fastq.gz. Suppose these samples grew on MEFs.**
 
 * To run the analysis for these samples and keep intermediate files, use the following command (after running the installation script):
 
