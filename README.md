@@ -98,7 +98,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --ref: Full path to a human fasta file (default: $projectDir/genome_files/star_ref/GRCh38.primary_assembly.genome.fa)
 
---ref_dict: Full path to a human fasta dictionary file (created and to bu used by gatk) (default: $projectDir/genome_files/star_ref/GRCh38.primary_assembly.genome.dict)
+--ref_dict: Full path to a human fasta dictionary file (created and to be used by gatk) (default: $projectDir/genome_files/star_ref/GRCh38.primary_assembly.genome.dict)
 
 --dbsnp: Full path to a dbsnp vcf file (default: $projectDir/genome_files/dbSNP155Renamed.vcf.gz)
 
