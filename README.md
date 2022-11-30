@@ -58,11 +58,8 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 * **Important!** All RNA (or DNA) fastq files need to be gz-compressed. Single ended fastq files need to have the following namming format: sample-name.fastq.gz, and paired ended fastq files need to have the following format: sample-name_1.fastq.gz/sample-name_2.fastq.gz
 
 ### Basic parameters
---project_dir: Full path to the the project directory (default: $PWD).
 
-* **Important-do not be confused between $project_dir (a user parameter) and $projectDir (which is the directory where the software execution file is)**
-
---fastq_folder: Path to a folder containing the fastq files (default: $project_dir/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
+--fastq_folder: Path to a folder containing the fastq files (default: $PWD/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
 
 --single: Whether the RNA-seq library is single ended (true/false, default: false)
 
@@ -78,7 +75,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --dna_sample_name: Name of DNA-seq sample without the .fastq.gz extension. Use if a DNA-seq for the examined cell line is available (default: "" for no integration).
 
---dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $project_dir/dna_fastq). 
+--dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $PWD/dna_fastq). 
 
 --dna_single: Whether the DNA-seq library is single ended (true/false, default: false)
 
@@ -112,12 +109,3 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --bwa_index: Full path to the BWA index files (default: )
 
-Example for a paired-ends RNA-seq run, using 4 CPUs, keeping intermediate files:
-```bash
-nextflow run /path/to/RNA2CM --fastq esc_1.fastq.gz --fastq2 esc_2.fastq.gz --cpu 4 --keepInter true 
-```
-
-Example for a single-end RNA-seq run, skipping mouse read filtration and running on a SLURM cluster (nextflow manages batch jobs, so no need to use sbatch):
-```bash
-nextflow run /path/to/RNA2CM --fastq SRR1234567.fastq.gz --filterMouse false -profile cluster
-```
