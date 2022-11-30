@@ -69,7 +69,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --keepInter: Whether to keep intermediate alignment and VCF files (true/false, default: false). 
 
---mouse_feeders: Whether to perform mouse contamination cleanup (true/false, default: true).
+--mouse_feeders: Whether to perform mouse contamination cleanup (true/false, default: false).
 
 --strandness: Whether the library is unstranded or strand-specific (int, 0: unstranded; 1: forward strand; 2: reverse strand, default: 0)
 
@@ -107,5 +107,36 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --headers: Full path to a vcf headers file for vcf annotation with gene names (default: $projectDir/genome_files/headers_for_annotation.txt)
 
---bwa_index: Full path to the BWA index files (default: )
+--bwa_index: Full path to the BWA index files (default: $projectDir/genome_files/bwa_ref/*)
+
+# Examples
+
+### Let there be a folder in a path /User/gal/epigenetic_analysis/fastq within a slurm cluster which contains fastq files from 2 paired-ended samples that were sequenced by their 1st strand: ERR590400_1.fastq.gz;  ERR590400_2.fastq.gz; ERR590401_1.fastq.gz; ERR590401_2.fastq.gz. Suppose these samples grew on MEFs.
+
+* To run the analysis for these samples and keep intermediate files, use the following command (after running the installation script):
+
+```bash
+nextflow run /path/to/EpiTyping/main.nf\
+ --fastq_folder /User/gal/epigenetic_analysis/fastq\
+ -profile cluster\
+ --keepInter true\
+ --mouse_feeders true\
+ --strandness 1\
+ --outdir /User/gal/epigenetic_analysis/output
+```
+* Suppose you also have a folder /User/gal/epigenetic_analysis/dna_fastq which contains fastq files from  whole genome sequencing of H9 ESC line: SRR6377128_1.fastq.gz; SRR6377128_2.fastq.gz. Considering that both ERR590400 and ERR590401 are samples taken from H9 ESC, you can integrate the DNA-seq with the RNA-seq to detect monoallelic as well as biallelic expression from the RNA-seq samples with the following command:
+
+```bash
+nextflow run /path/to/EpiTyping/main.nf\
+ --fastq_folder /User/gal/epigenetic_analysis/fastq\
+ --dna_fastq_folder /User/gal/epigenetic_analysis/dna_fastq\
+ --dna_reference SRR6377128\
+ -profile cluster\
+ --keepInter true\
+ --mouse_feeders true\
+ --strandness 1\
+ --outdir /User/gal/epigenetic_analysis/output
+```
+
+
 
