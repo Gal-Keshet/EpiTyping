@@ -16,7 +16,15 @@ singularity help  # test that singularity is working
 ```bash
 git clone https://github.com/Gal-Keshet/EpiTyping.git  # clone the project using git
 ```
-2. Execute the script named installation.nf which is responsible for setting up all the reference data and will complete the installation (this might take a while).
+2. Download docker images to run the software:
+```bash
+cd /path/to/EpiTyping
+
+singularity pull docker://broadinstitute/gatk
+
+singularity pull docker://galclbl/epityping
+```
+3. Execute the script named installation.nf which is responsible for setting up all the reference data and will complete the installation (this might take a while).
 ```bash
 nextflow run /path/to/EpiTyping/installation.nf [parameters]  # run the installation script
 ```
@@ -25,6 +33,8 @@ nextflow run /path/to/EpiTyping/installation.nf [parameters]  # run the installa
 -profile: Choose the executor profile between a local workstation or usage on a SLURM cluster (standard/cluster, default: standard).
 
 --cpu: The number of threads for multi-threading (int, default 8).
+
+--mem: Memory limit for the run ([int].GB, default: 64.GB)
 
 --readlength: The expected Illumina read length for optimal alignment by STAR (int, default 100).
 
@@ -65,7 +75,9 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 -profile: (standard/cluster, default: standard).
 
---cpu: (int, default 8).
+--cpu: (int, default 12).
+
+--mem: Memory limit for the run ([int].GB, default: 64.GB)
 
 --keepInter: Whether to keep intermediate alignment and VCF files (true/false, default: false). 
 
