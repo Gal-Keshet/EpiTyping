@@ -26,7 +26,7 @@ singularity pull docker://galclbl/epityping
 ```
 3. Execute the script named installation.nf which is responsible for setting up all the reference data and will complete the installation (this might take a while).
 ```bash
-nextflow run /path/to/EpiTyping/installation.nf [parameters]  # run the installation script
+nextflow run installation.nf [parameters]  # run the installation script
 ```
 
 ### Basic parameters
