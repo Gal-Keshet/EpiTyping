@@ -300,7 +300,7 @@ process FILTER_VARIANT_TRANCHES {
     -O ${sampleId}_tranches_filter.vcf\
     -ip 100\
     --resource $dbsnp\
-    --info-key CNN_2D\
+    --info-key CNN_1D\
     --snp-tranche 99.95\
     --indel-tranche 99.4
 
