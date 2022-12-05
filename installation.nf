@@ -105,7 +105,6 @@ process CREATE_DICTIONARY {
 process GENERATE_HUMAN_STAR_INDEX {
     debug true         
     publishDir "$PWD/genome_files/", mode:'copy'
-    memory '40GB'
 
     input:
     path fasta
@@ -150,8 +149,7 @@ process DOWNLOAD_MOUSE_FASTA {
 process GENERATE_MOUSE_STAR_INDEX {
     debug true
     publishDir "$PWD/genome_files/", mode: 'copy'
-    memory '40GB'
-
+    
     input:
     path fasta
     path gtf
@@ -199,8 +197,7 @@ process RENAME_DBSNP {
 
 process GENERATE_BWA_INDEX {
     debug true
-    memory '40GB'
-
+    
     publishDir "$PWD/genome_files/bwa_ref", mode: 'copy'
 
     input:
