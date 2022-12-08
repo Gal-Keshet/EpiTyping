@@ -71,6 +71,8 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --fastq_folder: Path to a folder containing the fastq files (default: $PWD/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
 
+--multiple_samples: Whether there is more than one sample (true/false, default: false)
+
 --single: Whether the RNA-seq library is single ended (true/false, default: false)
 
 -profile: (standard/cluster, default: standard).
@@ -130,6 +132,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 ```bash
 nextflow run /path/to/EpiTyping/main.nf\
  --fastq_folder /User/gal/epigenetic_analysis/fastq\
+ --multiple_samples true\
  -profile cluster\
  --keepInter true\
  --mouse_feeders true\
@@ -141,6 +144,7 @@ nextflow run /path/to/EpiTyping/main.nf\
 ```bash
 nextflow run /path/to/EpiTyping/main.nf\
  --fastq_folder /User/gal/epigenetic_analysis/fastq\
+ --multiple_samples true\
  --dna_fastq_folder /User/gal/epigenetic_analysis/dna_fastq\
  --dna_reference SRR6377128\
  -profile cluster\
