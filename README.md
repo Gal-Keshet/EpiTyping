@@ -166,7 +166,7 @@ Under the outdir folder, a results folder will also be created with two subdirec
 
 Under loi, if there is no DNA integration, two files will be created:
 
- - LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, 0 corresponds to an uninformative gene, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
+ -- LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, 0 corresponds to an uninformative gene, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
  
  - LOI_per_locus_matrix.csv: a table where each row correspondes to an imprinted region that exists in the imprinted_genes_location.csv file under the genome_files        folder, and each column corresponds to a sample. In this table, 0 corresponds to an uninformative region and an int > 0 corresponds to the number of biallelic genes    detected in the given region.
  
