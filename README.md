@@ -155,7 +155,6 @@ nextflow run /path/to/EpiTyping/main.nf\
  -profile cluster\
  --keepInter true\
  --mouse_feeders true\
- --strandness 1\
  --outdir /User/gal/epigenetic_analysis/output
 ```
 
