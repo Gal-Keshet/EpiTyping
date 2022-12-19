@@ -3,7 +3,13 @@ EpiTyping is a tool for detecting imprinting and X-chromosome inactivation statu
 ![scheme_cropped](https://user-images.githubusercontent.com/112553439/204306399-e99da88e-0d30-4665-bfdb-e4329b1e8f53.jpg)
 
 ## Pre-requisites 
-Nextflow and Singularity (or apptainer, the new name for the Singularity project) are the only pre-requisites for the EpiTyping tool. Install both if needed and make sure they are properly running on your system. If the following commands do not generate any error message you are good to go.
+Nextflow and Singularity (or apptainer, the new name for the Singularity project) are the only pre-requisites for the EpiTyping tool. Install both if needed and make sure they are properly running on your system. 
+
+* For nextflow installation refer to https://www.nextflow.io/ 
+
+* for apptainer/singularity installation refer to https://apptainer.org/ 
+
+If the following commands do not generate any error message you are good to go.
 ```bash
 nextflow run hello  # test that nextflow is working
 
@@ -99,7 +105,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 ### Advanced parameters (Use with caution. see note on advanced parameters for installation)
 
---common_adapters: Full path to a fastq file containing ilumina adapter sequences to be used with the Trimmomatic software. We provide such file in the genome_files directory (default: $projectDir/genome_files/CommonAdapters.fa).
+--common_adapters: Full path to a fasta file containing ilumina adapter sequences to be used with the Trimmomatic software. We provide such file in the genome_files directory (default: $projectDir/genome_files/CommonAdapters.fa).
 
 --index: Full path to the human STAR index folder (default: $projectDir/genome_files/star_index)
 
@@ -125,7 +131,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 # Examples
 
-**Let there be a folder in a path /User/gal/epigenetic_analysis/fastq within a slurm cluster which contains fastq files from 2 paired-end samples that were sequenced by their 1st strand: ERR590400_1.fastq.gz;  ERR590400_2.fastq.gz; ERR590401_1.fastq.gz; ERR590401_2.fastq.gz. Suppose these samples grew on MEFs.**
+**Let there be a folder in a path /User/gal/epigenetic_analysis/fastq within a slurm cluster which contains fastq files from 2 paired-end samples that are unstranded: ERR3466738_1.fastq.gz;  ERR3466738_2.fastq.gz; ERR3466740_1.fastq.gz; ERR3466740_2.fastq.gz. Suppose these samples grew on MEFs.**
 
 * To run the analysis for these samples and keep intermediate files, use the following command (after running the installation script):
 
@@ -136,10 +142,9 @@ nextflow run /path/to/EpiTyping/main.nf\
  -profile cluster\
  --keepInter true\
  --mouse_feeders true\
- --strandness 1\
  --outdir /User/gal/epigenetic_analysis/output
 ```
-* Suppose you also have a folder /User/gal/epigenetic_analysis/dna_fastq which contains fastq files from  whole genome sequencing of H9 ESC line: SRR6377128_1.fastq.gz; SRR6377128_2.fastq.gz. Considering that both ERR590400 and ERR590401 are samples taken from H9 ESC, you can integrate the DNA-seq with the RNA-seq to detect monoallelic as well as biallelic expression from the RNA-seq samples with the following command:
+* Suppose you also have a folder /User/gal/epigenetic_analysis/dna_fastq which contains fastq files from  whole genome sequencing of H1 ESC line: SRR2070629_1.fastq.gz; SRR2070629_2.fastq.gz. Considering that both ERR3466740 and ERR3466738 are samples taken from H1 ESC, you can integrate the DNA-seq with the RNA-seq to detect monoallelic as well as biallelic expression from the RNA-seq samples with the following command:
 
 ```bash
 nextflow run /path/to/EpiTyping/main.nf\
@@ -153,6 +158,27 @@ nextflow run /path/to/EpiTyping/main.nf\
  --strandness 1\
  --outdir /User/gal/epigenetic_analysis/output
 ```
+
+# Output
+Output files are saved to the outdir folder (default: $PWD/output)
+
+Under the outdir folder, a results folder will also be created with two subdirectories: loi and xci.
+
+Under loi, if there is no DNA integration, two files will be created:
+
+ - LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, 0 corresponds to an uninformative gene, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
+ 
+ - LOI_per_locus_matrix.csv: a table where each row correspondes to an imprinted region that exists in the imprinted_genes_location.csv file under the genome_files        folder, and each column corresponds to a sample. In this table, 0 corresponds to an uninformative region and an int > 0 corresponds to the number of biallelic genes    detected in the given region.
+ 
+If there is DNA integration, one file will be created in the loi folder:
+
+ - LOI_matrix_with_dna_integration.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files          folder, and that showed at least one heterozygote position in one of its exons. Each column corresponds to a sample. In this table, 0 corresponds to a gene which      showed no biallelic expression of any heterozygote SNP detected in the DNA-seq, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene (only SNPs which were detected in the DNA).
+ 
+ Under the xci folder, one file will appear:
+ 
+  - XCI_status.csv: a table where each row correspondes to a sample and one column which will either output "XaXa" for no X-chromosome inactivation (XCI), "XaXe" for       XCI erosion, "XaXi" for intact XCI or "Male" in case the RNA-seq sample belongs to a male cell line.
+ 
+* If keepInter paremeter is true, subdirectories under the outdir folder will be created with the intermediate results. 
 
 
 
