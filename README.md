@@ -164,9 +164,11 @@ Output files are saved to the outdir folder (default: $PWD/output)
 
 Under the outdir folder, a results folder will also be created with two subdirectories: loi and xci.
 
+* If keepInter paremeter is true, subdirectories under the outdir folder will be created with the intermediate results. 
+
 Under loi, if there is no DNA integration, two files will be created:
 
- -- LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, 0 corresponds to an uninformative gene, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
+ - LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, 0 corresponds to an uninformative gene, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
  
  - LOI_per_locus_matrix.csv: a table where each row correspondes to an imprinted region that exists in the imprinted_genes_location.csv file under the genome_files        folder, and each column corresponds to a sample. In this table, 0 corresponds to an uninformative region and an int > 0 corresponds to the number of biallelic genes    detected in the given region.
  
@@ -178,7 +180,6 @@ If there is DNA integration, one file will be created in the loi folder:
  
   - XCI_status.csv: a table where each row correspondes to a sample and one column which will either output "XaXa" for no X-chromosome inactivation (XCI), "XaXe" for       XCI erosion, "XaXi" for intact XCI or "Male" in case the RNA-seq sample belongs to a male cell line.
  
-* If keepInter paremeter is true, subdirectories under the outdir folder will be created with the intermediate results. 
 
 
 
