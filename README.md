@@ -151,7 +151,7 @@ nextflow run /path/to/EpiTyping/main.nf\
  --fastq_folder /User/gal/epigenetic_analysis/fastq\
  --multiple_samples true\
  --dna_fastq_folder /User/gal/epigenetic_analysis/dna_fastq\
- --dna_reference SRR6377128\
+ --dna_reference SRR2070629\
  -profile cluster\
  --keepInter true\
  --mouse_feeders true\
