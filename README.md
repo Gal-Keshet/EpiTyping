@@ -7,7 +7,7 @@ Nextflow and Singularity (or apptainer, the new name for the Singularity project
 
 * For nextflow installation refer to https://www.nextflow.io/ 
 
-* for apptainer/singularity installation refer to https://apptainer.org/ 
+* For apptainer/singularity installation refer to https://apptainer.org/ 
 
 If the following commands do not generate any error message you are good to go.
 ```bash
