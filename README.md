@@ -75,7 +75,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 ### Basic parameters
 
---fastq_folder: Path to a folder containing the fastq files (default: $PWD/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
+--fastq_folder: Path to a folder containing the fastq files (default: $projectDir/fastq). The folder can contain multiple fastq files but they all need to represent samples which were prepared with the same library composition (e.g all paired and unstranded; all single and unstranded etc.)
 
 --multiple_samples: Whether there is more than one sample (true/false, default: false)
 
@@ -95,9 +95,11 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --dna_sample_name: Name of DNA-seq sample without the .fastq.gz extension. Use if a DNA-seq for the examined cell line is available (default: "" for no integration).
 
---dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $PWD/dna_fastq). 
+--dna_fastq_folder: Path to dna fastq files if DNA-seq for the examined cell line is available. Used together with --dna_sample_name parameter (default: $projectDir/dna_fastq). 
 
 --dna_single: Whether the DNA-seq library is single ended (true/false, default: false)
+
+--mouse_feeders_dna: whether to perform mouse contamination cleanup from DNA sample. (true/false, default: false).
 
 * If a DNA-seq sample is given for integration, make sure **all** the RNA-seq samples in the fastq folder are from the same cell line
 
@@ -128,6 +130,8 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 --headers: Full path to a vcf headers file for vcf annotation with gene names (default: $projectDir/genome_files/headers_for_annotation.txt)
 
 --bwa_index: Full path to the BWA index files (default: $projectDir/genome_files/bwa_ref/*)
+
+--bwa_mouse_index: Full path to the BWA mouse index files (default: $projectDir/genome_files/bwa_mouse_ref/*) 
 
 # Examples
 
