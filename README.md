@@ -71,7 +71,8 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --single false [parameters] # for paired-ends reads (default. All files in fastq folder need to be paired ended)
 ```
 
-* **Important!** All RNA (or DNA) fastq files need to be gz-compressed. Single ended fastq files need to have the following namming format: sample-name.fastq.gz, and paired ended fastq files need to have the following format: sample-name_1.fastq.gz/sample-name_2.fastq.gz
+* **Important!** All RNA (or DNA) fastq files need to be gz-compressed. Single ended fastq files need to have the following naming format: sample-name.fastq.gz, and paired ended fastq files need to have the following format: sample-name_1.fastq.gz/sample-name_2.fastq.gz
+* sample-name format: sample-name needs to start with an alphabetical character, which is followed by either alphabetical, numerical or underline characters. No hyphens are allowed.
 
 ### Basic parameters
 
