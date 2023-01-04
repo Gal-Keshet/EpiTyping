@@ -5,11 +5,11 @@ params.mouseFasta = 'https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/r
 params.dbSNP = 'https://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz'
 params.dbSNP_index = 'https://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz.tbi'
 params.readlength=100
-params.remap_file="$PWD/genome_files/remapNCBI.txt"
+params.remap_file="$projectDir/genome_files/remapNCBI.txt"
 
 process DOWNLOAD_HUMAN_GTF {
     debug true
-    publishDir "$PWD/genome_files/star_ref", mode: 'copy'     
+    publishDir "$projectDir/genome_files/star_ref", mode: 'copy'     
     input:
     val gtf
         
@@ -24,7 +24,7 @@ process DOWNLOAD_HUMAN_GTF {
 
 process CREATE_INTERVALS {
         debug true
-        publishDir "$PWD/genome_files", mode: 'copy'
+        publishDir "$projectDir/genome_files", mode: 'copy'
         
         input:
         path gtf
@@ -39,7 +39,7 @@ process CREATE_INTERVALS {
 
 process INDEX_INTERVALS {
         debug true
-        publishDir "$PWD/genome_files", mode: 'copy'
+        publishDir "$projectDir/genome_files", mode: 'copy'
         
         input:
         path intervals
@@ -54,7 +54,7 @@ process INDEX_INTERVALS {
 
 process DOWNLOAD_HUMAN_FASTA {
     debug true    
-    publishDir "$PWD/genome_files/star_ref", mode: 'copy' 
+    publishDir "$projectDir/genome_files/star_ref", mode: 'copy' 
         
     input:
     val fasta
@@ -70,7 +70,7 @@ process DOWNLOAD_HUMAN_FASTA {
 
 process INDEX_FASTA {
         debug true
-        publishDir "$PWD/genome_files/star_ref", mode: 'copy'
+        publishDir "$projectDir/genome_files/star_ref", mode: 'copy'
         
         input:
         path fasta 
@@ -87,7 +87,7 @@ process INDEX_FASTA {
 process CREATE_DICTIONARY {
         debug true
         label 'var_call'
-        publishDir "$PWD/genome_files/star_ref", mode:'copy'
+        publishDir "$projectDir/genome_files/star_ref", mode:'copy'
         memory '8GB'
         
         input:
@@ -104,7 +104,7 @@ process CREATE_DICTIONARY {
 
 process GENERATE_HUMAN_STAR_INDEX {
     debug true         
-    publishDir "$PWD/genome_files/", mode:'copy'
+    publishDir "$projectDir/genome_files/", mode:'copy'
 
     input:
     path fasta
@@ -134,7 +134,7 @@ process DOWNLOAD_MOUSE_GTF {
 
 process DOWNLOAD_MOUSE_FASTA {
     debug true
-    publishDir "$PWD/genome_files/mouse_ref", mode:'copy'
+    publishDir "$projectDir/genome_files/mouse_ref", mode:'copy'
 
     input:
     val fasta
@@ -150,7 +150,7 @@ process DOWNLOAD_MOUSE_FASTA {
 
 process GENERATE_MOUSE_STAR_INDEX {
     debug true
-    publishDir "$PWD/genome_files/", mode: 'copy'
+    publishDir "$projectDir/genome_files/", mode: 'copy'
 
     input:
     path fasta
@@ -182,7 +182,7 @@ process DOWNLOAD_DBSNP {
 
 process RENAME_DBSNP {
         debug true
-        publishDir "$PWD/genome_files", mode: 'copy' 
+        publishDir "$projectDir/genome_files", mode: 'copy' 
         
         input:
         tuple path(dbSNP), path(dbSNPindex)
@@ -200,7 +200,7 @@ process RENAME_DBSNP {
 process GENERATE_BWA_INDEX {
     debug true
 
-    publishDir "$PWD/genome_files/bwa_ref", mode: 'copy'
+    publishDir "$projectDir/genome_files/bwa_ref", mode: 'copy'
 
     input:
     path fasta
@@ -216,7 +216,7 @@ process GENERATE_BWA_INDEX {
 process GENERATE_BWA_MOUSE_INDEX {
     debug true
 
-    publishDir "$PWD/genome_files/bwa_mouse_ref", mode: 'copy'
+    publishDir "$projectDir/genome_files/bwa_mouse_ref", mode: 'copy'
 
     input:
     path fasta
