@@ -30,9 +30,13 @@ singularity pull docker://broadinstitute/gatk
 
 singularity pull docker://galclbl/epityping
 ```
-3. Execute the script named installation.nf which is responsible for setting up all the reference data and will complete the installation (this might take a while).
+3. Execute the script named installation.nf which is responsible for setting up all the reference data and will complete the installation (this might take a while). 
 ```bash
 nextflow run installation.nf [parameters]  # run the installation script
+```
+4. To save space, delete the work directory (the folder nextflow creates during the run)
+```bash
+rm -rf work/
 ```
 
 ### Basic parameters
