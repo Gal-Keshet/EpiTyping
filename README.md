@@ -34,7 +34,7 @@ singularity pull docker://galclbl/epityping
 ```bash
 nextflow run installation.nf [parameters]  # run the installation script
 ```
-4. To save space, delete the work directory (the folder nextflow creates during the run)
+4. To save space, delete the work directory (the folder nextflow creates during the run).
 ```bash
 rm -rf work/
 ```
