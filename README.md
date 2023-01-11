@@ -9,6 +9,8 @@ Nextflow and Singularity (or apptainer, the new name for the Singularity project
 
 * For apptainer/singularity installation refer to https://apptainer.org/ 
 
+* The installation will require ~360 GB of free disk space
+
 If the following commands do not generate any error message you are good to go.
 ```bash
 nextflow run hello  # test that nextflow is working
@@ -34,7 +36,7 @@ singularity pull docker://galclbl/epityping
 ```bash
 nextflow run installation.nf [parameters]  # run the installation script
 ```
-4. To save space, delete the work directory (the folder nextflow creates during the run).
+4. To save space, delete the work directory (the folder nextflow creates during the run; should free ~130 GB of disk space).
 ```bash
 rm -rf work/
 ```
