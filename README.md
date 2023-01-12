@@ -3,7 +3,7 @@ EpiTyping is a tool for detecting imprinting and X-chromosome inactivation statu
 ![scheme1_cropped](https://user-images.githubusercontent.com/112553439/212015214-ad780ec7-c75a-4045-9c6e-e413b08342e8.jpg)
 
 ## Pre-requisites 
-Nextflow (from version 22.10.4 onwards) and Singularity (or apptainer, the new name for the Singularity project; program works from singularity version 3.8.1 onwards) are the only pre-requisites for the EpiTyping tool. Install both if needed and make sure they are properly running on your system. 
+Nextflow (from version 22.10.4 onwards) and Singularity (or apptainer, the new name for the Singularity project; program works from Singularity version 3.8.1 onwards) are the only pre-requisites for the EpiTyping tool. Install both if needed and make sure they are properly running on your system. 
 
 * For nextflow installation refer to https://www.nextflow.io/ 
 
