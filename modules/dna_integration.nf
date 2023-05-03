@@ -597,7 +597,7 @@ process LOI_MATRIX_DNA_INTEGRATION {
       
       #count the number of monoallelic/biallelic/uninformative SNPs per gene
       ase_merged_data[[ase_sample]] <- as.data.frame(ase_merged_data[[ase_sample]] %>%
-                                      group_by(Gene, Location, Imprinting.related.disease) %>%
+                                      group_by(Gene = factor(Gene, levels = unique(Gene)), Location, Imprinting.related.disease) %>%
                                       summarise(n.biallelic = sum(allelic == 2), n.monoallelic = sum(allelic == 1), n.uninformative = sum(allelic == 0)))
       
       #summarize  results
