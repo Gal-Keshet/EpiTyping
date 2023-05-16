@@ -180,7 +180,7 @@ Under loi, if there is no DNA integration, two files will be created:
 
  - LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, "Uninformative" corresponds to an uninformative gene, "Not expressed" corresponds to a gene that was not expressed and "Biallelic by X SNPs"            corresponds to the number of biallelic SNPs detected in the given gene.
  
- - LOI_per_locus_matrix.csv: a table where each row correspondes to an imprinted region that exists in the imprinted_genes_location.csv file under the genome_files        folder, and each column corresponds to a sample. In this table, 0 corresponds to an uninformative region and "Biallelic by X SNPs" corresponds to the number of biallelic genes    detected in the given region.
+ - LOI_per_locus_matrix.csv: a table where each row correspondes to an imprinted region that exists in the imprinted_genes_location.csv file under the genome_files        folder, and each column corresponds to a sample. In this table, 0 corresponds to an uninformative region and "Biallelic by X genes" corresponds to the number of biallelic genes    detected in the given region.
  
 If there is DNA integration, one file will be created in the loi folder:
 
