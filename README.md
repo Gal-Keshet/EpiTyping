@@ -184,7 +184,7 @@ Under loi, if there is no DNA integration, two files will be created:
  
 If there is DNA integration, one file will be created in the loi folder:
 
- - LOI_matrix_with_dna_integration.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files          folder, and that showed at least one heterozygote position in one of its exons. Each column corresponds to a sample. In this table, "Monoallelic by X SNPs" corresponds to a gene which      showed only monoallelic expression in x heterozygote SNP detected in the DNA-seq, "Not expressed" corresponds to a gene that was not expressed and "Biallelic by X SNPs"            corresponds to the number of biallelic SNPs detected in the given gene (only SNPs which were detected in the DNA).
+ - LOI_matrix_with_dna_integration.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files          folder, and that showed at least one heterozygote position in one of its exons. Each column corresponds to a sample. In this table, "Monoallelic by X SNPs" corresponds to a gene which      showed only monoallelic expression in x heterozygote SNPs detected in the DNA-seq, "Not expressed" corresponds to a gene that was not expressed and "Biallelic by X SNPs"            corresponds to the number of biallelic SNPs detected in the given gene (only SNPs which were detected in the DNA).
  
  Under the xci folder, two files will appear:
  
