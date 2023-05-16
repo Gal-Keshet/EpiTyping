@@ -178,18 +178,19 @@ Under the outdir folder, a results folder will also be created with two subdirec
 
 Under loi, if there is no DNA integration, two files will be created:
 
- - LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, 0 corresponds to an uninformative gene, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
+ - LOI_matrix.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files folder, and each column      corresponds to a sample. In this table, "Uninformative" corresponds to an uninformative gene, "Not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene.
  
  - LOI_per_locus_matrix.csv: a table where each row correspondes to an imprinted region that exists in the imprinted_genes_location.csv file under the genome_files        folder, and each column corresponds to a sample. In this table, 0 corresponds to an uninformative region and an int > 0 corresponds to the number of biallelic genes    detected in the given region.
  
 If there is DNA integration, one file will be created in the loi folder:
 
- - LOI_matrix_with_dna_integration.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files          folder, and that showed at least one heterozygote position in one of its exons. Each column corresponds to a sample. In this table, 0 corresponds to a gene which      showed no biallelic expression of any heterozygote SNP detected in the DNA-seq, "not expressed" corresponds to a gene that was not expressed and an int > 0            corresponds to the number of biallelic SNPs detected in the given gene (only SNPs which were detected in the DNA).
+ - LOI_matrix_with_dna_integration.csv: a table where each row correspondes to a gene that exists in the imprinted_genes_location.csv file under the genome_files          folder, and that showed at least one heterozygote position in one of its exons. Each column corresponds to a sample. In this table, "Monoallelic by X SNPs" corresponds to a gene which      showed only monoallelic expression in x heterozygote SNP detected in the DNA-seq, "Not expressed" corresponds to a gene that was not expressed and "Biallelic by X SNPs"            corresponds to the number of biallelic SNPs detected in the given gene (only SNPs which were detected in the DNA).
  
- Under the xci folder, one file will appear:
+ Under the xci folder, two files will appear:
  
   - XCI_status.csv: a table where each row correspondes to a sample and one column which will either output "XaXa" for no X-chromosome inactivation (XCI), "XaXe" for       XCI erosion, "XaXi" for intact XCI or "Male" in case the RNA-seq sample belongs to a male cell line.
  
+  - XCI_status_per_gene.csv: a table where each row correspondes to an X-chromosome gene and each column corresponds to a sample. In this table, the values will either be "Uninformative" if the gene is uninformative, "Unexpressed" if the gene is not expressed or "Biallelic by X SNPs", mentioning the number of biallelically expressed SNPs if the gene is biallelically expressed.
 
 
 
