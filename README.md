@@ -96,7 +96,7 @@ nextflow run /path/to/EpiTyping/main.nf --fastq_folder /path/to/fastq_dir --sing
 
 --keepInter: Whether to keep intermediate alignment and VCF files (true/false, default: false). 
 
---mouse_feeders: Whether to perform mouse contamination cleanup (true/false, default: false).
+--mouse_feeders: Whether to perform mouse contamination cleanup (true/false, default: true).
 
 --strandness: Whether the library is unstranded or strand-specific (int, 0: unstranded; 1: forward strand; 2: reverse strand, default: 0)
 
