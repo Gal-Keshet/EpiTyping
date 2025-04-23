@@ -2,8 +2,8 @@ params.humanGTF = 'https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/rel
 params.humanFasta = 'https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_42/GRCh38.primary_assembly.genome.fa.gz'
 params.mouseGTF = 'https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M31/gencode.vM31.primary_assembly.annotation.gtf.gz'
 params.mouseFasta = 'https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M31/GRCm39.primary_assembly.genome.fa.gz'
-params.dbSNP = 'https://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz'
-params.dbSNP_index = 'https://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz.tbi'
+params.dbSNP = 'https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz'
+params.dbSNP_index = 'https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz.tbi'
 params.readlength=100
 params.remap_file="$projectDir/genome_files/remapNCBI.txt"
 
@@ -172,11 +172,11 @@ process DOWNLOAD_DBSNP {
     val dbsnp_index
 
     output:
-    tuple path("dbSNP155.vcf.gz"), path("dbSNP155.vcf.gz.tbi")
+    tuple path("dbSNP157.vcf.gz"), path("dbSNP157.vcf.gz.tbi")
 
     """
-    wget --no-check-certificate -O dbSNP155.vcf.gz $dbsnp
-    wget --no-check-certificate -O dbSNP155.vcf.gz.tbi $dbsnp_index
+    wget --no-check-certificate -O dbSNP157.vcf.gz $dbsnp
+    wget --no-check-certificate -O dbSNP157.vcf.gz.tbi $dbsnp_index
     """
 }
 
@@ -189,11 +189,11 @@ process RENAME_DBSNP {
         path remapNCBI
 
         output:
-        path "dbSNP155Renamed.vcf*"
+        path "dbSNP157Renamed.vcf*"
 
         """
-        bcftools annotate --threads $task.cpus --output-type z --rename-chrs $remapNCBI --output dbSNP155Renamed.vcf.gz $dbSNP
-        tabix dbSNP155Renamed.vcf.gz
+        bcftools annotate --threads $task.cpus --output-type z --rename-chrs $remapNCBI --output dbSNP157Renamed.vcf.gz $dbSNP
+        tabix dbSNP157Renamed.vcf.gz
         """ 
 }
 
